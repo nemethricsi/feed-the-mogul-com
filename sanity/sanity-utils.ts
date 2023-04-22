@@ -2,6 +2,7 @@ import { createClient, groq } from "next-sanity";
 import { config } from "./config/client-config";
 
 interface Author {
+  _id: string;
   name: string;
   slug: string;
   avatar: string;
