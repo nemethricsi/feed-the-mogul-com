@@ -1,4 +1,4 @@
-import { getAuthor } from "@/sanity/sanity-utils";
+import { getAuthor } from '@/sanity/sanity-utils';
 
 interface AuthorProps {
   params: {

@@ -1,11 +1,12 @@
-import { createClient, groq } from "next-sanity";
-import { config } from "./config/client-config";
+import { createClient, groq } from 'next-sanity';
+import { config } from './config/client-config';
 
 interface Author {
   _id: string;
   name: string;
   slug: string;
   avatar: string;
+  lqip: string;
 }
 
 export const getAuthors = async (): Promise<Author[]> => {
@@ -15,7 +16,8 @@ export const getAuthors = async (): Promise<Author[]> => {
       name,
       "slug": slug.current,
       "avatar": avatar.asset->url,
-    }`
+      "lqip": avatar.asset->metadata.lqip
+    }`,
   );
 };
 
@@ -26,7 +28,8 @@ export const getAuthor = async (slug: string): Promise<Author> => {
       name,
       "slug": slug.current,
       "avatar": avatar.asset->url,
+      "lqip": avatar.asset->metadata.lqip
     }`,
-    { slug }
+    { slug },
   );
 };

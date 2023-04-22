@@ -1,3 +1,3 @@
-import { author } from "./author";
+import { author } from './author';
 
 export const schemas = [author];
