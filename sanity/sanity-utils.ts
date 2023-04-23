@@ -1,17 +1,32 @@
 import { createClient, groq } from 'next-sanity';
 import { config } from './config/client-config';
+import type { Person } from '@/types/Person';
+import type { Post } from '@/types/Post';
 
-interface Author {
-  _id: string;
-  name: string;
-  slug: string;
-  avatar: string;
-  lqip: string;
-}
-
-export const getAuthors = async (): Promise<Author[]> => {
+export const getPosts = async (): Promise<Post[]> => {
   return createClient(config).fetch(
-    groq`*[_type == "author"]{
+    groq`*[_type == "post"]{
+      _id,
+      title,
+      "slug": slug.current,
+    }`,
+  );
+};
+export const getPost = async (slug: string): Promise<Post> => {
+  return createClient(config).fetch(
+    groq`*[_type == "post" && slug.current == $slug][0]{
+      _id,
+      title,
+      "slug": slug.current,
+      content,
+    }`,
+    { slug },
+  );
+};
+
+export const getPersons = async (): Promise<Person[]> => {
+  return createClient(config).fetch(
+    groq`*[_type == "person"]{
       _id,
       name,
       "slug": slug.current,
@@ -21,9 +36,9 @@ export const getAuthors = async (): Promise<Author[]> => {
   );
 };
 
-export const getAuthor = async (slug: string): Promise<Author> => {
+export const getPerson = async (slug: string): Promise<Person> => {
   return createClient(config).fetch(
-    groq`*[_type == "author" && slug.current == $slug][0]{
+    groq`*[_type == "person" && slug.current == $slug][0]{
       _id,
       name,
       "slug": slug.current,

@@ -1,4 +1,4 @@
-import { getAuthor } from '@/sanity/sanity-utils';
+import { getPerson } from '@/sanity/sanity-utils';
 
 interface AuthorProps {
   params: {
@@ -8,7 +8,7 @@ interface AuthorProps {
 
 export default async function Author({ params }: AuthorProps) {
   const slug = params.authorSlug;
-  const author = await getAuthor(slug);
+  const author = await getPerson(slug);
 
   return <h1>{author.name}</h1>;
 }

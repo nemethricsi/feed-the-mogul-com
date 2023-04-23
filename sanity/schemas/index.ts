@@ -1,3 +1,4 @@
-import { author } from './author';
+import { person } from './person';
+import { post } from './post';
 
-export const schemas = [author];
+export const schemas = [post, person];
