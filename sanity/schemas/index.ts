@@ -1,4 +1,6 @@
-import { person } from './person';
-import { post } from './post';
+import { person } from './documents/person';
+import { post } from './documents/post';
 
-export const schemas = [post, person];
+import { embedYoutube } from './objects/embedYoutube';
+
+export const schemas = [post, person, embedYoutube];

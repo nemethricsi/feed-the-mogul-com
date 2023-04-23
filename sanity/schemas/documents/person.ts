@@ -1,7 +1,10 @@
+import { UsersIcon } from '@sanity/icons';
+
 export const person = {
   name: 'person',
-  title: 'Person',
+  title: 'Persons',
   type: 'document',
+  icon: UsersIcon,
   fields: [
     {
       name: 'name',

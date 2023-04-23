@@ -4,17 +4,7 @@
 
 @layer base {
   a {
-    @apply no-underline;
-  }
-}
-
-@layer components {
-  #portable-text strong {
-    @apply text-red-800;
-  }
-
-  #portable-text h2 {
-    @apply text-4xl;
+    @apply text-blue-500 underline underline-offset-2;
   }
 }
 
