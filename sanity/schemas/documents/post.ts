@@ -28,6 +28,24 @@ export const post = {
       to: [{ type: 'person' }],
     },
     {
+      name: 'featuredImage',
+      title: 'Featured Image',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          type: 'string',
+        },
+        {
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
+        },
+      ],
+    },
+    {
       name: 'content',
       title: 'Content',
       type: 'array',

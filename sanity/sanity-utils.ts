@@ -3,7 +3,7 @@ import { config } from './config/client-config';
 import type { Person } from '@/types/Person';
 import type { Post } from '@/types/Post';
 
-export const getPosts = async (): Promise<Post[]> => {
+export const getPosts = async (): Promise<Partial<Post>[]> => {
   return createClient(config).fetch(
     groq`*[_type == "post"]{
       _id,
@@ -19,6 +19,10 @@ export const getPost = async (slug: string): Promise<Post> => {
       title,
       "slug": slug.current,
       content,
+      "author": author->{
+        name,
+        "authorSlug": slug.current
+      }
     }`,
     { slug },
   );
@@ -47,4 +51,16 @@ export const getPerson = async (slug: string): Promise<Person> => {
     }`,
     { slug },
   );
+};
+
+export const getSomething = async (
+  slug: string,
+): Promise<{ title: string }> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        title: `Hello MotherFers! Oh, btw your slug is ${slug}`,
+      });
+    }, 2000);
+  });
 };
